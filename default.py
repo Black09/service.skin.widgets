@@ -218,6 +218,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.VideoAspect"     % (request, count), streaminfo['videoaspect'])
                     self.WINDOW.setProperty("%s.%d.AudioCodec"      % (request, count), streaminfo['audiocodec'])
                     self.WINDOW.setProperty("%s.%d.AudioChannels"   % (request, count), str(streaminfo['audiochannels']))
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
             del json_query
 
     def _fetch_tvshows_recommended(self, request):
@@ -295,6 +296,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.VideoAspect"         % (request, count), streaminfo['videoaspect'])
                     self.WINDOW.setProperty("%s.%d.AudioCodec"          % (request, count), streaminfo['audiocodec'])
                     self.WINDOW.setProperty("%s.%d.AudioChannels"       % (request, count), str(streaminfo['audiochannels']))
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
             del json_query
 
     def _fetch_tvshows(self, request):
@@ -382,6 +384,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.VideoAspect"         % (request, count), streaminfo['videoaspect'])
                     self.WINDOW.setProperty("%s.%d.AudioCodec"          % (request, count), streaminfo['audiocodec'])
                     self.WINDOW.setProperty("%s.%d.AudioChannels"       % (request, count), str(streaminfo['audiochannels']))
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
             del json_query
 
     def _fetch_seasonthumb(self, tvshowid, seasonnumber):
@@ -447,6 +450,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.VideoAspect"     % (request, count), streaminfo['videoaspect'])
                     self.WINDOW.setProperty("%s.%d.AudioCodec"      % (request, count), streaminfo['audiocodec'])
                     self.WINDOW.setProperty("%s.%d.AudioChannels"   % (request, count), str(streaminfo['audiochannels']))
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
             del json_query
 
     def _fetch_albums(self, request):
@@ -486,6 +490,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.Art(thumb)"  % (request, count), item['thumbnail'])
                     self.WINDOW.setProperty("%s.%d.Art(fanart)" % (request, count), item['fanart'])
                     self.WINDOW.setProperty("%s.%d.Play"        % (request, count), play)
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
             del json_query
 
     def _fetch_artist(self, request):
@@ -516,6 +521,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.Mood"        % (request, count), " / ".join(item['mood']))
                     self.WINDOW.setProperty("%s.%d.Instrument"  % (request, count), " / ".join(item['instrument']))
                     self.WINDOW.setProperty("%s.%d.LibraryPath" % (request, count), path)
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
 
     def _fetch_song(self, request):
         if not xbmc.abortRequested:
@@ -545,6 +551,7 @@ class Main:
                     self.WINDOW.setProperty("%s.%d.File"        % (request, count), item['file'])
                     self.WINDOW.setProperty("%s.%d.Path"        % (request, count), path)
                     self.WINDOW.setProperty("%s.%d.Play"        % (request, count), play)
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
             del json_query
 
     def _fetch_addon(self, request):
@@ -577,6 +584,7 @@ class Main:
                     # stop if we've reached the number of items we need
                     if count == self.LIMIT:
                         break
+                self.WINDOW.setProperty("%s.NumItems" % request, str(count))
                 self.WINDOW.setProperty("%s.Count" % (request), str(json_query['result']['limits']['total']))
             del json_query
 
